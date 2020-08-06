@@ -8,3 +8,5 @@ array = file.split(',')
 for i in (array):
     mo = re.findall(pattern, i)
     print(mo)
+    
+file.close
