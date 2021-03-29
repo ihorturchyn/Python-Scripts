@@ -2,8 +2,8 @@
 import csv
 import pymysql
 pymysql.install_as_MySQLdb()
-mydb = pymysql.connect(host="localhost", user="root", password="password", database="test")
-with open('UserStatuses_inc_202103251310_srv4.csv') as csv_file:
+mydb = pymysql.connect(host="localhost", user="", password="", database="test")
+with open('name.csv') as csv_file:
     csvfile = csv.reader(csv_file, delimiter='|')
     all_value = []
     for row in csvfile:
