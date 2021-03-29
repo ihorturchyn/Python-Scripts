@@ -1,0 +1,16 @@
+#!/usr/bin/env python3
+import csv
+import pymysql
+pymysql.install_as_MySQLdb()
+mydb = pymysql.connect(host="localhost", user="root", password="password", database="test")
+with open('UserStatuses_inc_202103251310_srv4.csv') as csv_file:
+    csvfile = csv.reader(csv_file, delimiter='|')
+    all_value = []
+    for row in csvfile:
+        value = (row[0], row[1], row[2], row[3], row[4], row[5])
+        all_value.append(value)
+query = '''insert into table2(column1, column2, column3, column4, column5, column6) values ("%s", "%s", "%s", "%s", "%s", "%s")'''
+cursor = mydb.cursor()
+cursor.executemany(query, all_value)
+mydb.commit()
+cursor.close()
